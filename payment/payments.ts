@@ -1,6 +1,6 @@
 const payments: {
-    id: string, 
-    idempotencyKey: string, 
+    id: string,
+    idempotencyKey: string,
     amount: number
 }[] = [];
 
@@ -10,7 +10,7 @@ function recordPayment(idempotencyKey: string, amount: number) {
         throw new Error('Missing idempotency key, please provide a valid idempotency key.');
 
     // Check if the amount is valid (greater than 0)
-    if(amount <= 0 || !Number.isSafeInteger(amount)) 
+    if(amount <= 0 || !Number.isSafeInteger(amount))
         throw new Error('Amount must be a positive integer, invalid amount.');
 
     // Check if idempotencyKey exists, if it doesn't the create a new payment record.
@@ -28,7 +28,7 @@ function recordPayment(idempotencyKey: string, amount: number) {
     const id = crypto.randomUUID();
     const newPayment = {
         id,
-        idempotencyKey, 
+        idempotencyKey,
         amount};
     payments.push(newPayment);
     return newPayment;

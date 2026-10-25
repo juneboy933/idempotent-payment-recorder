@@ -20,7 +20,7 @@ test('Record a payment', async () => {
 
     const result = await testPool.query(
         `
-            SELECT * FROM payments 
+            SELECT * FROM payments
             WHERE idempotency_key = $1
         `, ['test-001']
     );
